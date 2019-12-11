@@ -40,11 +40,11 @@ class NullGuardTest extends TestCase
 
     public function testValidate(): void
     {
-        $this->guard = Mockery::spy(NullGuard::class . '[user]');
+        $this->guard = Mockery::mock(NullGuard::class . '[user]');
         $this->assertFalse($this->guard->validate(['email' => 'xxx@example.com', 'password' => 'abc123']));
         $this->guard->shouldNotHaveReceived('user');
 
-        $this->guard = Mockery::spy(NullGuard::class . '[user]');
+        $this->guard = Mockery::mock(NullGuard::class . '[user]');
         $this->assertFalse($this->guard->validate(['email' => 'xxx@example.com', 'password' => 'abc123']));
         $this->guard->shouldNotHaveReceived('user');
     }
@@ -66,12 +66,12 @@ class NullGuardTest extends TestCase
 
     public function testHasUser(): void
     {
-        $this->guard = Mockery::spy(NullGuard::class . '[user]');
+        $this->guard = Mockery::mock(NullGuard::class . '[user]');
         $this->guard->setUser($this->user);
         $this->assertTrue($this->guard->hasUser());
         $this->guard->shouldNotHaveReceived('user');
 
-        $this->guard = Mockery::spy(NullGuard::class . '[user]');
+        $this->guard = Mockery::mock(NullGuard::class . '[user]');
         $this->guard->unsetUser();
         $this->assertFalse($this->guard->hasUser());
         $this->guard->shouldNotHaveReceived('user');
