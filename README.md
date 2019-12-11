@@ -112,6 +112,8 @@ They heavily rely on the following flow:
 
 This library provides a helper that makes the useless contract methods to do nothing; always return nullish or falsy values.
 
+Now we include **`NullAuthenticatable`** trait on a user model.
+
 ```php
 <?php
 
@@ -124,31 +126,26 @@ use Mpyw\NullAuth\NullAuthenticatable;
 class User extends Model implements Authenticatable
 {
     use NullAuthenticatable;
-
-    /**
-     * Get the name of the unique identifier for the user.
-     *
-     * @return string
-     */
-    public function getAuthIdentifierName()
-    {
-        return $this->getKeyName();
-    }
-
-    /**
-     * Get the unique identifier for the user.
-     *
-     * @return mixed
-     */
-    public function getAuthIdentifier()
-    {
-        return $this->{$this->getKeyName()};
-    }
 }
 ```
 
-You only need to implement **[`getAuthIdentifierName()`]** and **[`getAuthIdentifier()`]** along with **`NullAuthenticatable`** trait,
-but you don't have to worry about anything else.
+Then only **[`getAuthIdentifierName()`]** and **[`getAuthIdentifier()`]** are provided as a valid implementation.
+
+```php
+<?php
+
+$user = User::find(1);
+
+// Minimal implementation for Authenticatable
+var_dump($user->getAuthIdentifierName()); // string(2) "id"
+var_dump($user->getAuthIdentifier());     // int(1)
+
+// Useless implementation for Authenticatable when we don't use StatefulGuard
+var_dump($user->getAuthPassword());       // string(0) ""
+var_dump($user->getRememberTokenName());  // string(0) ""
+var_dump($user->getRememberToken());      // string(0) ""
+$user->setRememberToken('...');           // Does nothing
+```
 
 ### Middleware-based Authentication
 

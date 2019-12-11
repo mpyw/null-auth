@@ -37,10 +37,20 @@ class NullAuthenticatableTest extends TestCase
 
         $this->user = new class($this->attributes) extends GenericUser {
             use NullAuthenticatable;
+
+            public function getKeyName()
+            {
+                return 'id';
+            }
         };
 
         $this->strict = new class($this->attributes) extends GenericUser {
             use StrictNullAuthenticatable;
+
+            public function getKeyName()
+            {
+                return 'id';
+            }
         };
     }
 
