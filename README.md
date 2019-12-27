@@ -17,6 +17,28 @@ Null Guard for Laravel. Designed for Middleware-based authentication and testing
 composer require mpyw/null-auth
 ```
 
+## Features
+
+### `NullAuthenticatable` family
+
+| Trait | ID | Password | Remember Token |
+|:---|:---:|:---:|:---:|
+| `GenericNullAuthenticatable`<br>`GenericStrictNullAuthenticatable` | ❗️ | ❌| ❌|
+| `NullAuthenticatable`<br>`StrictNullAuthenticatable` | ✅| ❌| ❌|
+| `NoRememberTokenAuthenticatable`<br>`StrictNoRememberTokenAuthenticatable` | ✅| ✅| ❌|
+
+- ❗️shows containing abstract methods.
+- `Strict` classes throw `LogicException` on bad function calls.
+
+### `NullGuard`
+
+- `NullGuard::user()` always returns Authenticatable already set by `NullGuard::setUser()`.
+- `NullGuard::unsetUser()` can unset user.
+
+### `NullUserProvider`
+
+- All methods do nothing and always returns falsy value.
+
 ## Usage
 
 ### Basic Usage
