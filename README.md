@@ -28,7 +28,7 @@ composer require mpyw/null-auth
 | `NoRememberTokenAuthenticatable`<br>`StrictNoRememberTokenAuthenticatable` | ✅| ✅| ❌|
 
 - ❗️shows containing abstract methods.
-- `Strict` classes throw `LogicException` on bad function calls.
+- `Strict` traits throw `LogicException` on bad method calls.
 
 ### `NullGuard`
 
