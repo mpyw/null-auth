@@ -3,7 +3,7 @@
 namespace Mpyw\NullAuth\Tests\Unit;
 
 use Illuminate\Auth\GenericUser;
-use LogicException;
+use BadMethodCallException;
 use Mpyw\NullAuth\NullAuthenticatable;
 use Mpyw\NullAuth\StrictNullAuthenticatable;
 use Mpyw\NullAuth\Tests\TestCase;
@@ -70,7 +70,7 @@ class NullAuthenticatableTest extends TestCase
     {
         $this->assertSame('', $this->user->getAuthPassword());
 
-        $this->expectException(LogicException::class);
+        $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Not implemented');
         $this->strict->getAuthPassword();
     }
@@ -79,7 +79,7 @@ class NullAuthenticatableTest extends TestCase
     {
         $this->assertSame('', $this->user->getRememberToken());
 
-        $this->expectException(LogicException::class);
+        $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Not implemented');
         $this->strict->getRememberToken();
     }
@@ -89,7 +89,7 @@ class NullAuthenticatableTest extends TestCase
         $this->user->setRememberToken('yyy');
         $this->assertSame('xxx', $this->user->remember_token);
 
-        $this->expectException(LogicException::class);
+        $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Not implemented');
         $this->strict->setRememberToken('yyy');
     }
@@ -98,7 +98,7 @@ class NullAuthenticatableTest extends TestCase
     {
         $this->assertSame('', $this->user->getRememberTokenName());
 
-        $this->expectException(LogicException::class);
+        $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Not implemented');
         $this->strict->getRememberTokenName();
     }
