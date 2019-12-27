@@ -2,7 +2,7 @@
 
 namespace Mpyw\NullAuth;
 
-use LogicException;
+use BadMethodCallException;
 
 trait GenericStrictNullAuthenticatable
 {
@@ -15,7 +15,7 @@ trait GenericStrictNullAuthenticatable
      */
     public function getAuthPassword()
     {
-        throw new LogicException('Not implemented');
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -25,7 +25,7 @@ trait GenericStrictNullAuthenticatable
      */
     public function getRememberToken()
     {
-        throw new LogicException('Not implemented');
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -35,7 +35,7 @@ trait GenericStrictNullAuthenticatable
      */
     public function setRememberToken($value)
     {
-        throw new LogicException('Not implemented');
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -45,6 +45,6 @@ trait GenericStrictNullAuthenticatable
      */
     public function getRememberTokenName()
     {
-        throw new LogicException('Not implemented');
+        throw new BadMethodCallException('Not implemented');
     }
 }
