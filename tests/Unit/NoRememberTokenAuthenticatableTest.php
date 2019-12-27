@@ -2,8 +2,8 @@
 
 namespace Mpyw\NullAuth\Tests\Unit;
 
-use Illuminate\Auth\GenericUser;
 use BadMethodCallException;
+use Illuminate\Auth\GenericUser;
 use Mpyw\NullAuth\NoRememberTokenAuthenticatable;
 use Mpyw\NullAuth\StrictNoRememberTokenAuthenticatable;
 use Mpyw\NullAuth\Tests\TestCase;
