@@ -8,8 +8,8 @@ Null Guard for Laravel. Designed for Middleware-based authentication and testing
 
 ## Requirements
 
-- PHP: ^7.1
-- Laravel: ^5.6 || ^6.0 || ^7.0 || ^8.0
+- PHP: ^7.3 || ^8.0
+- Laravel: ^6.0 || ^7.0 || ^8.0
 
 ## Installing
 
