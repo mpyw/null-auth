@@ -1,4 +1,4 @@
-# Null Auth [![Build Status](https://travis-ci.com/mpyw/null-auth.svg?branch=master)](https://travis-ci.com/mpyw/null-auth) [![Coverage Status](https://coveralls.io/repos/github/mpyw/null-auth/badge.svg?branch=master)](https://coveralls.io/github/mpyw/null-auth?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mpyw/null-auth/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mpyw/null-auth/?branch=master)
+# Null Auth [![Build Status](https://github.com/mpyw/null-auth/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/mpyw/null-auth/actions) [![Coverage Status](https://coveralls.io/repos/github/mpyw/null-auth/badge.svg?branch=master)](https://coveralls.io/github/mpyw/null-auth?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mpyw/null-auth/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mpyw/null-auth/?branch=master)
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/1351893/70479968-e64e8e00-1b21-11ea-83c6-1d5e51f7e3e5.png">
@@ -8,8 +8,8 @@ Null Guard for Laravel. Designed for Middleware-based authentication and testing
 
 ## Requirements
 
-- PHP: ^7.3 || ^8.0
-- Laravel: ^6.0 || ^7.0 || ^8.0
+- PHP: `^7.3 || ^8.0`
+- Laravel: `^6.0 || ^7.0 || ^8.0`
 
 ## Installing
 
