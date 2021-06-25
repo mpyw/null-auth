@@ -9,13 +9,11 @@ jobs:
     strategy:
       matrix:
         php: [7.3, 7.4, 8.0]
-        libraries: 
-          - laravel: ^8.0
-            testbench: ^6.0
-          - laravel: ^7.0
-            testbench: ^5.0
-          - laravel: ^6.0
-            testbench: ^4.0
+        lib:
+          - { laravel: ^8.0, testbench: ^6.0, composer_flags: --prefer-stable }
+          - { laravel: ^7.0, testbench: ^5.0, composer_flags: --prefer-stable }
+          - { laravel: ^6.0, testbench: ^4.0, composer_flags: --prefer-stable }
+          - { laravel: ^6.0, testbench: ^4.0, composer_flags: --prefer-stable --prefer-lowest }
 
     steps:
       - uses: actions/checkout@v2
@@ -26,8 +24,8 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
 
-      - run: composer require "laravel/framework:${{ matrix.libraries.laravel }}" "orchestra/testbench:${{ matrix.libraries.testbench }}" --no-update
-      - run: composer require "phpunit/phpunit:^9" --no-update
+      - run: composer require "laravel/framework:${{ matrix.lib.laravel }}" --dev --no-update ${{ matrix.lib.composer_flags }}
+      - run: composer require "phpunit/phpunit" "orchestra/testbench:${{ matrix.lib.testbench }}" --dev --no-update
       - run: composer update
       - run: mkdir -p build/logs
       - run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
