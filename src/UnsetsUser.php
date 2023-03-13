@@ -15,7 +15,7 @@ trait UnsetsUser
      *
      * @return $this
      */
-    public function unsetUser()
+    public function unsetUser(): static
     {
         $this->user = null;
 

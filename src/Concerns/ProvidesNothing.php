@@ -9,10 +9,9 @@ trait ProvidesNothing
     /**
      * Retrieve a user by their unique identifier.
      *
-     * @param  mixed                                           $identifier
-     * @return null|\Illuminate\Contracts\Auth\Authenticatable
+     * @param mixed $identifier
      */
-    public function retrieveById($identifier)
+    public function retrieveById($identifier): ?Authenticatable
     {
         return null;
     }
@@ -20,11 +19,10 @@ trait ProvidesNothing
     /**
      * Retrieve a user by their unique identifier and "remember me" token.
      *
-     * @param  mixed                                           $identifier
-     * @param  string                                          $token
-     * @return null|\Illuminate\Contracts\Auth\Authenticatable
+     * @param mixed $identifier
+     * @param string $token
      */
-    public function retrieveByToken($identifier, $token)
+    public function retrieveByToken($identifier, $token): ?Authenticatable
     {
         return null;
     }
@@ -32,33 +30,24 @@ trait ProvidesNothing
     /**
      * Update the "remember me" token for the given user in storage.
      *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable $user
-     * @param  string                                     $token
-     * @return void
+     * @param string $token
      */
-    public function updateRememberToken(Authenticatable $user, $token)
+    public function updateRememberToken(Authenticatable $user, $token): void
     {
     }
 
     /**
      * Retrieve a user by the given credentials.
-     *
-     * @param  array                                           $credentials
-     * @return null|\Illuminate\Contracts\Auth\Authenticatable
      */
-    public function retrieveByCredentials(array $credentials)
+    public function retrieveByCredentials(array $credentials): ?Authenticatable
     {
         return null;
     }
 
     /**
      * Validate a user against the given credentials.
-     *
-     * @param  \Illuminate\Contracts\Auth\Authenticatable $user
-     * @param  array                                      $credentials
-     * @return bool
      */
-    public function validateCredentials(Authenticatable $user, array $credentials)
+    public function validateCredentials(Authenticatable $user, array $credentials): bool
     {
         return false;
     }

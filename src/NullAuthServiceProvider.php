@@ -9,12 +9,7 @@ use Illuminate\Support\ServiceProvider;
 
 class NullAuthServiceProvider extends ServiceProvider
 {
-    /** @noinspection PhpDocMissingThrowsInspection */
-
-    /**
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
         /* @noinspection PhpUnhandledExceptionInspection */
         $this->app->resolved(AuthManager::class)
@@ -22,11 +17,7 @@ class NullAuthServiceProvider extends ServiceProvider
             : $this->app->afterResolving(AuthManager::class, Closure::fromCallable([$this, 'extendComponents']));
     }
 
-    /**
-     * @param  \Illuminate\Auth\AuthManager $auth
-     * @return void
-     */
-    protected function extendComponents(AuthManager $auth)
+    protected function extendComponents(AuthManager $auth): void
     {
         $auth->extend('null', function (Container $app, string $name, array $config) use ($auth) {
             $guard = new NullGuard();

@@ -11,20 +11,16 @@ trait HasEloquentIdentifier
 {
     /**
      * Get the name of the unique identifier for the user.
-     *
-     * @return string
      */
-    public function getAuthIdentifierName()
+    public function getAuthIdentifierName(): string
     {
         return $this->getKeyName();
     }
 
     /**
      * Get the unique identifier for the user.
-     *
-     * @return mixed
      */
-    public function getAuthIdentifier()
+    public function getAuthIdentifier(): mixed
     {
         return $this->{$this->getKeyName()};
     }

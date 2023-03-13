@@ -10,10 +10,7 @@ use Mpyw\NullAuth\Tests\TestCase;
 
 class NoRememberTokenAuthenticatableTest extends TestCase
 {
-    /**
-     * @var array
-     */
-    protected $attributes;
+    protected array $attributes;
 
     /**
      * @var \Illuminate\Auth\GenericUser|\Mpyw\NullAuth\NoRememberTokenAuthenticatable

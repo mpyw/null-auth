@@ -6,15 +6,11 @@ trait RequiresIdentifier
 {
     /**
      * Get the name of the unique identifier for the user.
-     *
-     * @return string
      */
-    abstract public function getAuthIdentifierName();
+    abstract public function getAuthIdentifierName(): string;
 
     /**
      * Get the unique identifier for the user.
-     *
-     * @return mixed
      */
-    abstract public function getAuthIdentifier();
+    abstract public function getAuthIdentifier(): mixed;
 }

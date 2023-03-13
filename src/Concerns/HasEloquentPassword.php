@@ -11,10 +11,8 @@ trait HasEloquentPassword
 {
     /**
      * Get the unique identifier for the user.
-     *
-     * @return mixed
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): mixed
     {
         return $this->getAttribute('password');
     }

@@ -4,6 +4,7 @@ namespace Mpyw\NullAuth\Tests\Unit;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\GenericUser;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Mockery;
 use Mpyw\NullAuth\NullGuard;
 use Mpyw\NullAuth\Tests\TestCase;
@@ -14,11 +15,7 @@ class NullGuardTest extends TestCase
      * @var \Illuminate\Auth\GuardHelpers|\Illuminate\Contracts\Auth\Guard|\Mpyw\NullAuth\NullGuard
      */
     protected $guard;
-
-    /**
-     * @var \Illuminate\Contracts\Auth\Authenticatable
-     */
-    protected $user;
+    protected Authenticatable $user;
 
     public function setUp(): void
     {

@@ -3,15 +3,13 @@
 namespace Mpyw\NullAuth\Tests\Unit;
 
 use Illuminate\Auth\GenericUser;
+use Illuminate\Contracts\Auth\UserProvider;
 use Mpyw\NullAuth\NullUserProvider;
 use Mpyw\NullAuth\Tests\TestCase;
 
 class NullUserProviderTest extends TestCase
 {
-    /**
-     * @var \Illuminate\Contracts\Auth\UserProvider
-     */
-    protected $provider;
+    protected UserProvider $provider;
 
     public function testGetAuthP(): void
     {

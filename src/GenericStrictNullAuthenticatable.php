@@ -10,20 +10,16 @@ trait GenericStrictNullAuthenticatable
 
     /**
      * Get the password for the user.
-     *
-     * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         throw new BadMethodCallException('Not implemented');
     }
 
     /**
      * Get the token value for the "remember me" session.
-     *
-     * @return string
      */
-    public function getRememberToken()
+    public function getRememberToken(): string
     {
         throw new BadMethodCallException('Not implemented');
     }
@@ -33,7 +29,7 @@ trait GenericStrictNullAuthenticatable
      *
      * @param string $value
      */
-    public function setRememberToken($value)
+    public function setRememberToken($value): void
     {
         throw new BadMethodCallException('Not implemented');
     }
@@ -43,7 +39,7 @@ trait GenericStrictNullAuthenticatable
      *
      * @return string
      */
-    public function getRememberTokenName()
+    public function getRememberTokenName(): string
     {
         throw new BadMethodCallException('Not implemented');
     }

@@ -3,6 +3,7 @@
 namespace Mpyw\NullAuth\Concerns;
 
 use Illuminate\Auth\GuardHelpers;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 trait GuardsNothing
 {
@@ -10,21 +11,16 @@ trait GuardsNothing
 
     /**
      * Get the currently authenticated user.
-     *
-     * @return null|\Illuminate\Contracts\Auth\Authenticatable
      */
-    public function user()
+    public function user(): ?Authenticatable
     {
         return $this->user;
     }
 
     /**
      * Validate a user's credentials.
-     *
-     * @param  array $credentials
-     * @return bool
      */
-    public function validate(array $credentials = [])
+    public function validate(array $credentials = []): bool
     {
         return false;
     }
