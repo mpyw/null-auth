@@ -4,6 +4,7 @@ namespace Mpyw\NullAuth\Tests\Unit;
 
 use BadMethodCallException;
 use Illuminate\Auth\GenericUser;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Mpyw\NullAuth\NullAuthenticatable;
 use Mpyw\NullAuth\StrictNullAuthenticatable;
 use Mpyw\NullAuth\Tests\TestCase;
@@ -51,6 +52,15 @@ class NullAuthenticatableTest extends TestCase
         };
     }
 
+    public function testSatisfiesAuthenticatableInterface(): void
+    {
+        $user = new class() implements Authenticatable {
+            use NullAuthenticatable;
+        };
+
+        $this->assertInstanceOf(Authenticatable::class, $user);
+    }
+
     public function testGetAuthIdentifierName(): void
     {
         $this->assertSame('id', $this->user->getAuthIdentifierName());
@@ -70,6 +80,15 @@ class NullAuthenticatableTest extends TestCase
         $this->expectException(BadMethodCallException::class);
         $this->expectExceptionMessage('Not implemented');
         $this->strict->getAuthPassword();
+    }
+
+    public function testGetAuthPasswordName(): void
+    {
+        $this->assertSame('', $this->user->getAuthPasswordName());
+
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessage('Not implemented');
+        $this->strict->getAuthPasswordName();
     }
 
     public function testGetRememberToken(): void

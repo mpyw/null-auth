@@ -51,4 +51,11 @@ trait ProvidesNothing
     {
         return false;
     }
+
+    /**
+     * Rehash the user's password if required and supported.
+     */
+    public function rehashPasswordIfRequired(Authenticatable $user, array $credentials, bool $force = false)
+    {
+    }
 }

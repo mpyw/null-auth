@@ -41,4 +41,11 @@ class NullUserProviderTest extends TestCase
         $this->provider = new NullUserProvider();
         $this->assertFalse($this->provider->validateCredentials(new GenericUser([[]]), ['email' => 'xxx@example.com', 'password' => 'abc123']));
     }
+
+    public function testRehashPasswordIfRequired(): void
+    {
+        $this->provider = new NullUserProvider();
+        $this->provider->rehashPasswordIfRequired(new GenericUser([]), []);
+        $this->assertTrue(true);
+    }
 }
