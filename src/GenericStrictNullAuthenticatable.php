@@ -17,6 +17,14 @@ trait GenericStrictNullAuthenticatable
     }
 
     /**
+     * Get the name of the password attribute for the user.
+     */
+    public function getAuthPasswordName(): string
+    {
+        throw new BadMethodCallException('Not implemented');
+    }
+
+    /**
      * Get the token value for the "remember me" session.
      */
     public function getRememberToken(): string
