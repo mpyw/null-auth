@@ -8,19 +8,18 @@ jobs:
 
     strategy:
       matrix:
-        php: ['8.0', 8.1, 8.2]
-        laravel: [11, 10, 9]
-        include:
-          - { laravel: 11, phpunit: 11 }
-          - { laravel: 10, phpunit: 10 }
-          - { laravel: 9, phpunit: 9 }
+        php: [8.2, 8.3, 8.4]
+        lib:
+          - laravel: ^13.0.x-dev
+          - laravel: ^12.0
+          - laravel: ^11.0
         exclude:
-          - { php: 8.0, laravel: 10 }
-          - { php: 8.0, laravel: 11 }
-          - { php: 8.1, laravel: 11 }
+          - php: 8.2
+            lib:
+              laravel: ^13.0.x-dev
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -28,17 +27,16 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: xdebug
 
-      - run: composer require "laravel/framework:^${{ matrix.laravel }}" --dev
-      - run: composer require "phpunit/phpunit:^${{ matrix.phpunit }}" --dev
+      - run: composer require "laravel/framework:${{ matrix.lib.laravel }}" --dev
       - run: mkdir -p build/logs
-      - run: vendor/bin/phpunit -c 'phpunit${{ matrix.phpunit }}.xml' --coverage-clover build/logs/clover.xml
+      - run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
       - name: Upload Coverage
         uses: nick-invision/retry@v2
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_PARALLEL: 'true'
-          COVERALLS_FLAG_NAME: 'laravel:${{ matrix.laravel }}'
+          COVERALLS_FLAG_NAME: 'laravel:${{ matrix.lib.laravel }}'
         with:
           timeout_minutes: 1
           max_attempts: 3
